@@ -1,0 +1,79 @@
+# .github/workflows/build_python.yml
+
+name: Build pycli-crypto Python Executables
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow on pushes to the 'main' branch
+  workflow_dispatch: # Allows you to run this workflow manually from the GitHub Actions tab
+
+jobs:
+  build:
+    # Use a matrix strategy to build on different operating systems
+    # Each job will run on a specific OS runner to create the executable for that OS.
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.9'] # Specify the Python version for PyInstaller
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Action to check out your repository code
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5 # Action to set up the Python environment
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller cryptography # Install PyInstaller and your project's dependency
+
+      - name: Build Executable for Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          # Use PyInstaller to create a single executable.
+          # --onefile: Creates a single executable file.
+          # --name: Specifies the name of the executable.
+          # --add-data: Includes the 'modules' directory. Format is 'src:dest' for Unix-like.
+          pyinstaller --onefile --name pycli-crypto-linux main.py --add-data "modules:modules"
+        working-directory: . # Ensure the command runs from the root of your project
+
+      - name: Build Executable for Windows
+        if: matrix.os == 'windows-latest'
+        run: |
+          # --add-data: For Windows, the format is 'src;dest' (semicolon).
+          pyinstaller --onefile --name pycli-crypto-windows.exe main.py --add-data "modules;modules"
+        working-directory: .
+
+      - name: Build Executable for macOS
+        if: matrix.os == 'macos-latest'
+        run: |
+          # --add-data: For macOS, the format is 'src:dest'.
+          pyinstaller --onefile --name pycli-crypto-mac main.py --add-data "modules:modules"
+        working-directory: .
+
+      - name: Upload Linux Executable
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4 # Uploads the built executable as an artifact
+        with:
+          name: pycli-crypto-linux
+          path: dist/pycli-crypto-linux # PyInstaller places executables in the 'dist' directory
+
+      - name: Upload Windows Executable
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pycli-crypto-windows
+          path: dist/pycli-crypto-windows.exe # PyInstaller places executables in the 'dist' directory
+
+      - name: Upload macOS Executable
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pycli-crypto-mac
+          path: dist/pycli-crypto-mac # PyInstaller places executables in the 'dist' directory
