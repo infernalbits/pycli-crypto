@@ -15,7 +15,19 @@ When you run the script, PyCLI-Crypto intelligently sets up a temporary, isolate
 
 ## **Installation**
 
-No external installation steps are required\! Simply download the main.py script and place it in a location accessible from your command line. The script is designed to be self-sufficient and will manage its own dependencies upon execution.
+No external installation steps are required\! The script is designed to be self-sufficient and will manage its own dependencies upon execution.
+
+
+bash```
+
+git clone https://github.com/infernalbits/pycli-crypto && cd pycli-crypto
+
+mv main.py ~/bin/clicrypt
+chmod +x ~/bin/clicrypt
+
+
+```
+
 
 ## **Usage**
 
