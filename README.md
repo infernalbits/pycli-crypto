@@ -1,13 +1,17 @@
-ú# **PyCLI-Crypto**
+# **PyCLI-Crypto**
+
+
+*skip ahead* [Installation](#installation) | [Usage](#usage) | [Project Support](#supporting) | [Contributions](#contributions)
+
 
 PyCLI-Crypto is a powerful and convenient Python command-line application for encrypting and decrypting text and files directly from your terminal. It's designed to be clean and self-contained, managing all its dependencies internally without leaving any leftover files.
 
 ## **Features**
 
-* **Encrypt Text or Files**: Securely transform your sensitive data into an encrypted token.  
-* **Decrypt Tokens**: Convert encrypted tokens back into their original content.  
-* **Zero External Requirements**: The application handles all necessary Python packages within a temporary, self-cleaning virtual environment.  
-* **Clean Operation**: Leaves no temporary files or installations on your system.
+* **[Encrypt Text or Files](#encryption)**: Securely transform your sensitive data into an encrypted token.  
+* **[Decrypt Tokens](#decryption)**: Convert encrypted tokens back into their original content.  
+* **[Zero External Requirements](#installation)**: The application handles all necessary Python packages within a temporary, self-cleaning virtual environment.  
+* **[Clean Operation](#usage)**: Leaves no temporary files or installations on your system.
 
 ## **How It Works**
 
@@ -15,16 +19,23 @@ When you run the script, PyCLI-Crypto intelligently sets up a temporary, isolate
 
 ## **Installation**
 
-No external installation steps are required\! The script is designed to be self-sufficient and will manage its own dependencies upon execution. Clone the repo, move main.py to a dir in your $PATH, make it executable, encrypt all the things...
+No external installation steps are required\! The script is designed to be self-sufficient and will manage its own dependencies upon execution. 
+
+### RECOMMENDED METHOD
+
+* Clone this repo
+* Rename & Move main.py to a dir in your $PATH 
+* Make it executable
+* Encrypt ALL the things...
 
 ```
 # Clone this repo and cd into it
 git clone https://github.com/infernalbits/pycli-crypto.git && cd pycli-crypto
 
-# Move the file to a dir on $PATH
+# Rename & Move the file to a dir on $PATH
 sudo mv main.py /usr/bin/clicrypt
 
-# Make Executable 
+# Make file Executable 
 sudo chmod +x /usr/bin/clicrypt
 
 # Encrypt all the things (see [Usage](#usage))
@@ -77,7 +88,7 @@ clicrypt -d -d "a1b2c3d4e5f6..." -p "YourStrongPassword"
 clicrypt -d -f /path/to/your/encrypted_token.enc -p "YourStrongPassword"
 ```
 
-## **Support the Project**
+## **Support ** the project 
 
 If PyCLI-Crypto has been useful to you, consider supporting its development\! Your support helps in maintaining and improving this project. Plus, you know...food.
 
