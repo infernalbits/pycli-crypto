@@ -1,4 +1,4 @@
-# **PyCLI-Crypto**
+ú# **PyCLI-Crypto**
 
 PyCLI-Crypto is a powerful and convenient Python command-line application for encrypting and decrypting text and files directly from your terminal. It's designed to be clean and self-contained, managing all its dependencies internally without leaving any leftover files.
 
