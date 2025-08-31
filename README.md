@@ -15,17 +15,20 @@ When you run the script, PyCLI-Crypto intelligently sets up a temporary, isolate
 
 ## **Installation**
 
-No external installation steps are required\! The script is designed to be self-sufficient and will manage its own dependencies upon execution.
+No external installation steps are required\! The script is designed to be self-sufficient and will manage its own dependencies upon execution. Clone the repo, move main.py to a dir in your $PATH, make it executable, encrypt all the things...
 
+```
+# Clone this repo and cd into it
+git clone https://github.com/infernalbits/pycli-crypto.git && cd pycli-crypto
 
-bash```
+# Move the file to a dir on $PATH
+sudo mv main.py /usr/bin/clicrypt
 
-git clone https://github.com/infernalbits/pycli-crypto && cd pycli-crypto
+# Make Executable 
+sudo chmod +x /usr/bin/clicrypt
 
-mv main.py ~/bin/clicrypt
-chmod +x ~/bin/clicrypt
-
-
+# Encrypt all the things (see [Usage](#usage))
+clicrypt
 ```
 
 
@@ -35,25 +38,62 @@ PyCLI-Crypto uses command-line flags to determine the action and the data to pro
 
 ### **Encryption**
 
-To encrypt data (text or a file), use the \-e or \--encrypt flag. You must also specify the data source with \-d (for direct data) or \-f (for a file path), and provide a password with \-p or \--password.  
-**Encrypting Text**  
-`python main.py -e -d "Your secret message here" -p "YourStrongPassword"`
+To encrypt data (text or a file), use the \-e or \--encrypt flag. 
 
-**Encrypting a File**  
-`python main.py -e -f /path/to/your/secret_document.txt -p "YourStrongPassword"`
+You must also specify the data source and supply a password:
+
+\-d (direct data string) or
+\-f (path to file)
+and
+\-p or \--password (strong password will be necessary to decrypt)
+
+```
+# Encrypting Text
+python main.py -e -d "Your secret message here" -p "YourStrongPassword"
+
+# Encrypting a File
+python main.py -e -f /path/to/your/secret_document.txt -p "YourStrongPassword"
+```
 
 When encrypting a file, the application will suggest saving the output to a new file with a .enc extension (e.g., secret\_document.txt.enc).
 
 ### **Decryption**
 
-To decrypt an encrypted token, use the \-d or \--decrypt flag. Just like with encryption, you must specify the data source with \-d (for a token string) or \-f (for a file containing the token) and the original password with \-p or \--password.  
-**Decrypting a Token (from the command line)**  
-`python main.py -d -d "a1b2c3d4e5f6..." -p "YourStrongPassword"`
+To decrypt an encrypted token, use the \-d or \--decrypt flag. 
 
-*(Replace a1b2c3d4e5f6... with your actual token string)*  
-**Decrypting a Token (from a file)**  
-`python main.py -d -f /path/to/your/encrypted_token.enc -p "YourStrongPassword"`
+Just like with encryption, you must specify the data source and supply the password used to encrypt the file:
+\-d (a token string) or
+\-f (a file containing the token) 
+and
+\-p or \--password (original password)
+
+```
+# Decrypting a Token 
+clicrypt -d -d "a1b2c3d4e5f6..." -p "YourStrongPassword"
+
+# (Replace a1b2c3d4e5f6... with your actual token string)
+
+# Decrypting a Token (from a file)
+clicrypt -d -f /path/to/your/encrypted_token.enc -p "YourStrongPassword"
+```
 
 ## **Support the Project**
 
-If PyCLI-Crypto has been useful to you, consider supporting its development\! Your support helps in maintaining and improving this project.
+If PyCLI-Crypto has been useful to you, consider supporting its development\! Your support helps in maintaining and improving this project. Plus, you know...food.
+
+*-Bitcoin-*
+bc1q8md5z75qfnt8hs408fh8lx9un3gf5kpjs6mz4a
+
+*-USDT/Tron-* TKRjSD2yWqZeUMtejCj9rYMVdHxyGHdDdt
+
+*-Monero-* 49Lc1XP91UXMnN6DrqfYkPPJ6ZM6JZeu5HfEJuHZZNZcDykdJ1vPDp64PGfbnR1p9ZGG9pPiLTcxL3wwMh8EcBTx5mRdc7g
+
+*-Zcash-* t1g3rW82pScaUN8ZX6qyGjti8s7hZdV7PuF
+
+### **Contributions**
+
+If you have any changes to the projects' source code that you feel are, not only beneficial, but absolutely necessary to the projects future then create a pull request and your changes will be given serious consideration. 
+
+Given the nature and simplicity of the project, minor or superfluous changes will not be accepted without setious security implications/justification. 
+
+However, close mouths don't get fed. Submit your pull request, you never know. Worse case its rejected and you continue to use it in your fork with smug superiority every time you encrypt/decrypt the things.
