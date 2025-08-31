@@ -42,7 +42,7 @@ def setup_args():
     input_group.add_argument(
         "-f", "--file",
         type=str,
-        help="Path to a file whose content should be encrypted. Cannot be used with 'data' argument."
+        help="Path to a file whose content should be encrypted. Cannot be used with decrypt (-d) or 'data' argument."
     )
 
     # Optional argument for password-based key derivation
