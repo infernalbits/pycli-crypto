@@ -1,10 +1,12 @@
-# **PyCLI-Crypto**
+# [En]|[De] Crypt-it!
+### Pythonic cli encryption tool(s)
 
 
 *skip ahead* [Installation](#installation) | [Usage](#usage) | [Project Support](#supporting) | [Contributions](#contributions)
 
 
-PyCLI-Crypto is a powerful and convenient Python command-line application for encrypting and decrypting text and files directly from your terminal. It's designed to be clean and self-contained, managing all its dependencies internally without leaving any leftover files.
+Crypt-it! is a powerful and convenient Python command-line application for encrypting and decrypting text and files directly from your terminal. It's designed to be clean and self-contained, managing all its dependencies internally without leaving any leftover files.
+# **Crypt-it!**
 
 ## **Features**
 
@@ -15,7 +17,7 @@ PyCLI-Crypto is a powerful and convenient Python command-line application for en
 
 ## **How It Works**
 
-When you run the script, PyCLI-Crypto intelligently sets up a temporary, isolated Python virtual environment. It then installs any required libraries, such as cryptography, into this temporary space. Once your task is complete, this environment and all its contents are automatically removed. This ensures your system remains clean and you don't need to manually install any dependencies.
+When you run the script, Crypt-it! intelligently sets up a temporary, isolated Python virtual environment. It then installs any required libraries, such as cryptography, into this temporary space. Once your task is complete, this environment and all its contents are automatically removed. This ensures your system remains clean and you don't need to manually install any dependencies.
 
 ## **Installation**
 
@@ -30,22 +32,20 @@ No external installation steps are required\! The script is designed to be self-
 
 ```
 # Clone this repo and cd into it
-git clone https://github.com/infernalbits/pycli-crypto.git && cd pycli-crypto
-
+git clone https://github.com/infernalbits/Crypt-it.git && cd Crypt-it
 # Rename & Move the file to a dir on $PATH
-sudo mv main.py /usr/bin/clicrypt
-
+sudo mv crypt-it /usr/bin/crypt-it
 # Make file Executable 
-sudo chmod +x /usr/bin/clicrypt
+sudo chmod +x /usr/bin/crypt-it
 
 # Encrypt all the things (see [Usage](#usage))
-clicrypt
+crypt-it
 ```
 
 
 ## **Usage**
 
-PyCLI-Crypto uses command-line flags to determine the action and the data to process.
+Crypt-it! uses command-line flags to determine the action and the data to process.
 
 ### **Encryption**
 
@@ -59,14 +59,14 @@ and
 \-p or \--password (strong password will be necessary to decrypt)
 
 ```
-# Encrypting Text
-python main.py -e -d "Your secret message here" -p "YourStrongPassword"
+# Encrypting Text after Crypt-it! has been added to $PATH
+crypt-it -e -d "Your secret message here" -p "YourStrongPassword"
 
-# Encrypting a File
-python main.py -e -f /path/to/your/secret_document.txt -p "YourStrongPassword"
+# Encrypting a File after Crypt-it! has been added to $PATH
+crypt-it -e -f /path/to/your/secret_document.txt -p "YourStrongPassword"
 ```
 
-When encrypting a file, the application will suggest saving the output to a new file with a .enc extension (e.g., secret\_document.txt.enc).
+When encrypting a file, the application will suggest saving the output to a new file with a .enc extension (e.g., secret\_document.txt.enc)
 
 ### **Decryption**
 
@@ -80,17 +80,17 @@ and
 
 ```
 # Decrypting a Token 
-clicrypt -d -d "a1b2c3d4e5f6..." -p "YourStrongPassword"
+crypt-it -d -d "a1b2c3d4e5f6..." -p "YourStrongPassword"
 
 # (Replace a1b2c3d4e5f6... with your actual token string)
 
 # Decrypting a Token (from a file)
-clicrypt -d -f /path/to/your/encrypted_token.enc -p "YourStrongPassword"
+crypt-it -d -f /path/to/your/encrypted_token.enc -p "YourStrongPassword"
 ```
 
 ## **Support ** the project 
 
-If PyCLI-Crypto has been useful to you, consider supporting its development\! Your support helps in maintaining and improving this project. Plus, you know...food.
+If Crypt-it! has been useful to you, consider supporting its development! Your support helps in maintaining and improving this project. Plus, you know...food.
 
 *-Bitcoin-*
 bc1q8md5z75qfnt8hs408fh8lx9un3gf5kpjs6mz4a
