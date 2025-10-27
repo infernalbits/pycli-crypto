@@ -40,21 +40,21 @@ jobs:
           # --onefile: Creates a single executable file.
           # --name: Specifies the name of the executable.
           # --add-data: Includes the 'modules' directory. Format is 'src:dest' for Unix-like.
-          pyinstaller --onefile --name pycli-crypto-linux main.py --add-data "modules:modules"
+          pyinstaller --onefile --name pycli-crypto-linux crypt-it --add-data "modules:modules"
         working-directory: . # Ensure the command runs from the root of your project
 
       - name: Build Executable for Windows
         if: matrix.os == 'windows-latest'
         run: |
           # --add-data: For Windows, the format is 'src;dest' (semicolon).
-          pyinstaller --onefile --name pycli-crypto-windows.exe main.py --add-data "modules;modules"
+          pyinstaller --onefile --name pycli-crypto-windows.exe crypt-it --add-data "modules;modules"
         working-directory: .
 
       - name: Build Executable for macOS
         if: matrix.os == 'macos-latest'
         run: |
           # --add-data: For macOS, the format is 'src:dest'.
-          pyinstaller --onefile --name pycli-crypto-mac main.py --add-data "modules:modules"
+          pyinstaller --onefile --name pycli-crypto-mac crypt-it --add-data "modules:modules"
         working-directory: .
 
       - name: Upload Linux Executable
